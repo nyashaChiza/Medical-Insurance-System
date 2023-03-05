@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="nk-sidebar nk-sidebar-fixed " data-content="sidebarMenu">
+    <div class="nk-sidebar-element nk-sidebar-head">
+        <div class="nk-sidebar-brand">
+            <a href="html/index.html" class="logo-link nk-sidebar-logo">
+                <img class="logo-light logo-img" src="{% static 'images/logo.png' %}" srcset="{% static 'images/logo2x.png 2x' %}" alt="logo">
+                <img class="logo-dark logo-img" src="{% static 'images/logo-dark.png' %}" srcset="{% static 'images/logo-dark2x.png 2x' %}" alt="logo-dark">
+            </a>
+        </div>
+        <div class="nk-menu-trigger me-n2">
+            <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+        </div>
+    </div><!-- .nk-sidebar-element -->
+    <div class="nk-sidebar-element">
+        <div class="nk-sidebar-body" data-simplebar>
+            <div class="nk-sidebar-content">
+                <div class="nk-sidebar-menu">
+                    <ul class="nk-menu">
+                        <li class="nk-menu-item">
+                            <a href="{%url 'dashboard' %}" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-growth"></em></span>
+                                <span class="nk-menu-text">Dashboard</span>
+                            </a>
+                        </li><!-- .nk-menu-item -->
+                        <li class="nk-menu-item">
+                            <a href="" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-bar-chart-fill"></em></span>
+                                <span class="nk-menu-text">Certificates</span>
+                            </a>
+                        </li><!-- .nk-menu-item -->             
+                    </ul><!-- .nk-menu -->
+                </div><!-- .nk-sidebar-menu -->
+            </div><!-- .nk-sidebar-content -->
+        </div><!-- .nk-sidebar-body -->
+    </div><!-- .nk-sidebar-element -->
+</div>
