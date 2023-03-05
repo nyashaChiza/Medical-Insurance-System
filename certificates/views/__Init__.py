@@ -1,0 +1,1 @@
+from certificates.views.certificates import CertificateListView, CertificateDetailView, CertificateCreateView
