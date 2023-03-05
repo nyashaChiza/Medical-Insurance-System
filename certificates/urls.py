@@ -2,7 +2,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 
-from certificates.views.certificates import CertificateDetailView,  CertificateListView, CertificateCreateView, CertificateUpdateView, CertificateDeleteView
+from .views import CertificateListView, CertificateDetailView,CertificateUpdateView, CertificateCreateView, CertificateValidationCreateView, CertificateDeleteView
+
 urlpatterns = [
     path("index/", CertificateListView.as_view(), name="certificates-index"),
     path("create/", CertificateCreateView.as_view(), name="certificate-create"),

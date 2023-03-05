@@ -42,7 +42,12 @@
                 <tbody>
                     {% for service_provider in object_list %}
                     <tr>
-                        <td>{{service_provider.name}}</td>
+                       
+                        <td>
+                            <a href="{% url 'service-provider-details' service_provider.pk %}">     
+                                {{service_provider.name}}
+                          </a>
+                          </td>
                         <td>{{service_provider.affoz_code}}</td>
                         <td>{{service_provider.contact}}</td>
                         <td>{{service_provider.contact_personal_email}}</td>

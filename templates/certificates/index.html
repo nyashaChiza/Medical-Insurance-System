@@ -50,7 +50,12 @@
           <tbody>
             {% for certificate in certificates %}
             <tr>
-              <td>{{certificate.title}}</td>
+              
+              <td>
+                <a href="{% url 'certificate-detail' certificate.pk %}">     
+                {{certificate.title}}
+              </a>
+              </td>
               <td>{{certificate.service_provider}}</td>
               <td>{{certificate.validity_period_in_months }} Months</td>
               <td>{{certificate.created|date:"d/m/Y - g:ia" }}</td>
@@ -69,8 +74,7 @@
                           <li>
                             <a href="{% url 'certificate-detail' certificate.pk %}"
                               ><em class="icon ni ni-eye"></em
-                              ><span>Details</span></a
-                            >
+                              ><span>Details</span></a>
                           </li>
                           <li>
                             <a href="{% url 'update-certificate' certificate.pk  %}"
