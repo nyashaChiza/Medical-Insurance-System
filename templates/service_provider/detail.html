@@ -1,0 +1,70 @@
+{% extends 'layouts/base.html' %}
+{% load static%}
+
+{% block navigation %}
+<div class="nk-content-body">
+    <div class="nk-block-head nk-block-head-sm">
+        <div class="nk-block-between py-3 px-3 bg-light rounded-3">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Service Provider</h3>
+                <div class="nk-block-des text-soft">
+                    <p>Service provider details</p>
+                </div>
+            </div><!-- .nk-block-head-content -->
+            <div class="nk-block-head-content">
+                <div class="toggle-wrap nk-block-tools-toggle">
+                    <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                            <li class="nk-block-tools-opt"><a href="{%url 'service-providers-index' %}" class="btn btn-primary"><em class="icon ni ni-back"></em><span>Back</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- .nk-block-head-content -->
+        </div><!-- .nk-block-between -->
+    </div><!-- .nk-block-head -->
+{% endblock%}
+
+{% block content%}
+
+<div class="nk-block nk-block-lg">
+    <div class="card card-bordered">
+        <div class="card-inner">
+            <div class="card-head">
+                <h5 class="card-title">Service Provider Information</h5>
+            </div>
+            <ul class="nav nav-tabs mt-n3">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#tabItem5"><em class="icon ni ni-map"></em><span>Service Provider</span></a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tabItem5">
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Name</span>
+                        <span class="text-muted">{{service_provider.name}}</span>
+                    </div>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Affoz Code</span>
+                        <span class="text-muted">{{service_provider.affoz_code}}</span>
+                    </div>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Website</span>
+                        <span class="text-muted">{{service_provider.website}}</span>
+                    </div>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Contact</span>
+                        <span class="text-muted">{{service_provider.contact}}</span>
+                    </div>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Email</span>
+                        <span class="text-muted">{{service_provider.contact_personal_email}}</span>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div><!-- .nk-block -->
+
+
+
+{% endblock %}
