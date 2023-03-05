@@ -17,6 +17,7 @@
           <div class="toggle-expand-content" data-content="pageMenu">
             <ul class="nk-block-tools g-3">
               <li class="nk-block-tools-opt">
+                <a href="{%url 'validation-create' %}"  class="btn btn-primary mx-3"> <em class="icon ni ni-info"></em><span>Validate Certificate</span></a>
                 <a href="{%url 'certificate-create' %}"  class="btn btn-primary"><em class="icon ni ni-property-add"></em><span>Create New Certificate</span></a>
               </li>
             </ul>
@@ -42,7 +43,7 @@
               <th>Title</th>
               <th>Service Provider</th>
               <th>Created On</th>
-              <th>Validity Until</th>
+              <th>Validity Period</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -51,7 +52,8 @@
             <tr>
               <td>{{certificate.title}}</td>
               <td>{{certificate.service_provider}}</td>
-              <td>{{course.created|date:"d/m/Y - g:ia" }}</td>
+              <td>{{certificate.validity_period_in_months }} Months</td>
+              <td>{{certificate.created|date:"d/m/Y - g:ia" }}</td>
               <td class="nk-tb-col nk-tb-col-tools">
                 <ul class="nk-tb-actions gx-1">
                   <li>
@@ -65,33 +67,31 @@
                       <div class="dropdown-menu dropdown-menu-end">
                         <ul class="link-list-opt no-bdr">
                           <li>
-                            <a href="{% url 'certificate-detail' course.pk %}"
+                            <a href="{% url 'certificate-detail' certificate.pk %}"
                               ><em class="icon ni ni-eye"></em
                               ><span>Details</span></a
                             >
                           </li>
                           <li>
-                            <a href="{% url 'certificate-update' course.pk  %}"
+                            <a href="{% url 'update-certificate' certificate.pk  %}"
                               ><em class="icon ni ni-edit"></em
                               ><span>Update</span></a
                             >
                           </li>
                           <li>
-                            <a href="{% url 'certificate-renew' course.pk  %}"
-                              ><em class="icon ni ni-sync"></em
-                              ><span>Renew</span></a
-                            >
+                            <a href="{% url 'certificate-detail' certificate.pk %}"
+                              ><em class="icon ni ni-eye"></em>
+                              <span>Renew</span>
+                            </a>
                           </li>
                           <li>
-                            <span
-                              class="preview-item text-danger"
-                              data-bs-toggle="modal"
-                              data-bs-target="#modalAlert{{certificate.pk}}"
-                              ><span
-                                ><em class="icon ni ni-trash-alt mx-2"></em
-                                >Delete</span
-                              ></span
-                            >
+                            <span class="preview-item text-danger" data-bs-toggle="modal" data-bs-target="#modalAlert{{certificate.pk}}">
+                              
+                              <span>
+                                <em class="icon ni ni-trash-alt mx-1"></em>
+                                <span> &nbsp; Delete</span>
+                              </span>
+                            
                           </li>
                         </ul>
                       </div>
@@ -100,14 +100,12 @@
                 </ul>
               </td>
             </tr>
-            <div class="modal fade" tabindex="-1" id="modalAlert{{course.pk}}">
+            <div class="modal fade" tabindex="-1" id="modalAlert{{certificate.pk}}">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-body modal-body-lg text-center">
                     <div class="nk-modal">
-                      <em
-                        class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"
-                      ></em>
+                      <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger" ></em>
                       <h4 class="nk-modal-title">Delete {{ certificate }}</h4>
                       <div class="nk-modal-text">
                         <p class="lead">
@@ -115,20 +113,10 @@
                         </p>
                       </div>
                       <div class="nk-modal-action mt-5">
-                        <form method="POST" action='{% url 'certificate-delete'
-                        certificate.pk %}'> {% csrf_token %}
-                        <button
-                          type="submit"
-                          class="btn btn-lg btn-mw btn-danger"
-                        >
-                          Delete
-                        </button>
-                        <a
-                          href="#"
-                          class="btn btn-lg btn-mw btn-light"
-                          data-bs-dismiss="modal"
-                          >Cancel</a
-                        >
+                        <form method="POST" action='{% url 'delete-certificate' certificate.pk %}'> 
+                          {% csrf_token %}
+                        <button type="submit" class="btn btn-lg btn-mw btn-danger"> Delete </button>
+                        <a href="#" class="btn btn-lg btn-mw btn-light" data-bs-dismiss="modal">Cancel</a>
                       </div>
                     </div>
                   </div>

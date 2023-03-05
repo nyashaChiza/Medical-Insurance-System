@@ -20,6 +20,7 @@ class ServiceProviderCreateView(SuccessMessageMixin, CreateView):
 
 class ServiceProviderUpdateView(SuccessMessageMixin, UpdateView):
     model = ServiceProvider
+    context_object_name = 'service_provider'
     template_name = 'service_provider/update.html'
     form_class = ServiceProviderForm 
     success_message = "Service Provider updated successfully"

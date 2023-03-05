@@ -34,7 +34,7 @@
             </div>
             <ul class="nav nav-tabs mt-n3">
                 <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#tabItem5"><em class="icon ni ni-map"></em><span>Programme Type</span></a>
+                    <a class="nav-link active" data-bs-toggle="tab" href="#tabItem5"><em class="icon ni ni-map"></em><span>{{ certificate }}</span></a>
                 </li>
             </ul>
             <div class="tab-content">
@@ -43,18 +43,27 @@
                         <span class="text-muted">Title</span>
                         <span class="text-muted">{{ certificate.title }}</span>
                     </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
                         <span class="text-muted">Issuer</span>
                         <span class="text-muted">{{ certificate.issuer }}</span>
                     </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
                         <span class="text-muted">Validity Period</span>
                         <span class="text-muted">{{ certificate.validity_period_in_months }} Months</span>
                     </div>
+                    <hr class='bg-dark'>
+                    <div class="d-flex align-center justify-content-between py-1 ">
+                        <span class="text-muted">Valid Until</span>
+                        <span class="{% if today > valid_until %}text-danger {% else %} text-success{% endif %}">{{ valid_until }}</td></span>
+                    </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
                         <span class="text-muted">Created On</span>
                         <span class="text-muted">{{ certificate.created|date:"d/m/Y - g:ia" }}</span>
                     </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
                         <span class="text-muted">Updated On</span>
                         <span class="text-muted">{{ certificate.updated|date:"d/m/Y - g:ia" }}</span>

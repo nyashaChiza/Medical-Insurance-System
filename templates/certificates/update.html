@@ -7,7 +7,7 @@
     <div class="nk-block-head nk-block-head-sm">
         <div class="nk-block-between py-3 px-3 bg-light rounded-3">
             <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">Update {{ service_provider }} Service Provider</h3>
+                <h3 class="nk-block-title page-title">Update {{ certificate }} Certificate</h3>
                 <!-- <div class="nk-block-des text-soft">
                     <p>Add New Course</p>
                 </div> -->
@@ -16,7 +16,7 @@
                 <div class="toggle-wrap nk-block-tools-toggle">
                     <div class="toggle-expand-content" data-content="pageMenu">
                         <ul class="nk-block-tools g-3">
-                            <li class="nk-block-tools-opt"><a href="{%url 'service-providers-index' %}" class="btn btn-primary"><em class="icon ni ni-curve-down-left"></em><span>Back</span></a></li>
+                            <li class="nk-block-tools-opt"><a href="{%url 'certificates-index' %}" class="btn btn-primary"><em class="icon ni ni-curve-down-left"></em><span>Back</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
     <div class="card card-bordered">
         <div class="card-inner">
             <div class="card-head">
-                <h5 class="card-title">Service Providers Information</h5>
+                <h5 class="card-title">certificate Information</h5>
             </div>
             <form method = "post">
                 {% csrf_token %}
@@ -40,7 +40,7 @@
                     
                     <div class="col-12">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-lg btn-primary" value="save">Update Service Provider</button>
+                            <button type="submit" class="btn btn-lg btn-primary" value="save">Update Certificate</button>
                         </div>
                     </div>
                 </div>
