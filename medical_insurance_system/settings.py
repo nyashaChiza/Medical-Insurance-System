@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "dashboard.apps.DashboardConfig",
+    "claims.apps.ClaimsConfig",
     "certificates",
     "service_providers",
     
@@ -149,3 +150,9 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGGER = loguru.logger
+
+
+
+#model choices
+GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
+RELATIONSHIP = (('S', 'Single'), ('M', 'Married'))
