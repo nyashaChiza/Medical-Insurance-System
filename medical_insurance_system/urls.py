@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('certificates/', include('certificates.urls')),
     path('', include('service_providers.urls')),
+    path('', include('claims.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
