@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "dashboard.apps.DashboardConfig",
+    "claims.apps.ClaimsConfig",
     "certificates",
     "service_providers",
     
@@ -150,4 +151,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGGER = loguru.logger
 
+
 CERTIFICATE_TEMPLATE = f"{MEDIA_ROOT}/certificate_templates/Certificate of Service.docx"
+
+GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
+RELATIONSHIP = (('S', 'Single'), ('M', 'Married'))
+
