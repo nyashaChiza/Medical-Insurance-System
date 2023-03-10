@@ -6,3 +6,4 @@ sqlparse==0.4.3
 django-crispy-forms==1.14.0
 loguru
 mysqlclient
+docx-mailmerge==0.5.0
