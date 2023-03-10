@@ -1,0 +1,1 @@
+from certificates.signals.generate_certificates import generate_certificate

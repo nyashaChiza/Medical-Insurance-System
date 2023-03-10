@@ -149,3 +149,5 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGGER = loguru.logger
+
+CERTIFICATE_TEMPLATE = f"{MEDIA_ROOT}/certificate_templates/Certificate of Service.docx"

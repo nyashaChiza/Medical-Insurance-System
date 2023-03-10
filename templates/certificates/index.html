@@ -83,11 +83,12 @@
                             >
                           </li>
                           <li>
-                            <a href="{% url 'certificate-detail' certificate.pk %}"
-                              ><em class="icon ni ni-eye"></em>
-                              <span>Renew</span>
-                            </a>
+                            <a href="{% url 'download-certificate' certificate.pk  %}"
+                              ><em class="icon ni ni-download"></em
+                              ><span>Download</span></a
+                            >
                           </li>
+                         
                           <li>
                             <span class="preview-item text-danger" data-bs-toggle="modal" data-bs-target="#modalAlert{{certificate.pk}}">
                               
