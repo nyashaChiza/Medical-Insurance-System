@@ -40,25 +40,53 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="tabItem5">
                     <div class="d-flex align-center justify-content-between py-1">
-                        <span class="text-muted">Name</span>
-                        <span class="text-muted">{{claim.name}}</span>
+                        <span class="text-muted">Patient Name</span>
+                        <span class="text-muted">{{claim.patience_name}}</span>
                     </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
-                        <span class="text-muted">Affoz Code</span>
-                        <span class="text-muted">{{service_provider.affoz_code}}</span>
+                        <span class="text-muted">Gender</span>
+                        <span class="text-muted">{{claim.gender}}</span>
                     </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
-                        <span class="text-muted">Website</span>
-                        <span class="text-muted">{{service_provider.website}}</span>
+                        <span class="text-muted">City</span>
+                        <span class="text-muted">{{claim.city}}</span>
                     </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
-                        <span class="text-muted">Contact</span>
-                        <span class="text-muted">{{service_provider.contact}}</span>
+                        <span class="text-muted">Patient Date Of Birth</span>
+                        <span class="text-muted">{{claim.date_of_birth}}</span>
                     </div>
+                    <hr class='bg-dark'>
                     <div class="d-flex align-center justify-content-between py-1">
-                        <span class="text-muted">Email</span>
-                        <span class="text-muted">{{service_provider.contact_personal_email}}</span>
+                        <span class="text-muted">Cause</span>
+                        <span class="text-muted">{{claim.cause}}</span>
                     </div>
+                    <hr class='bg-dark'>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Patient suffix</span>
+                        <span class="text-muted">{{claim.patient_suffix}}</span>
+                    </div>
+                    <hr class='bg-dark'>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Fee Charged In USD</span>
+                        <span class="text-muted">{{claim.fee_charged}}</span>
+                    </div>
+                    <hr class='bg-dark'>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Service Provider</span>
+                        <span class="text-muted"><a href="{% url 'service-provider-details' claim.service_provider.pk %}">     
+                            {{claim.service_provider}}
+                      </a></span>
+                    </div>
+                    <hr class='bg-dark'>
+                    <div class="d-flex align-center justify-content-between py-1">
+                        <span class="text-muted">Claim Classification</span>
+
+                        {% if claim.classification == 'Clean' %}<span class= 'badge badge-dot bg-success'>{{claim.classification}}</span> {% else %}<span class= 'text-danger'>{{claim.classification}}</> {% endif %}
+                    </div>
+
                  </div>
             </div>
         </div>

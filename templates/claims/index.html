@@ -35,17 +35,19 @@
                         <th>Name</th>
                         <th>Gender</th>
                         <th>Email</th>
-                        <th>DOB</th>
+                        <th>Claim Classification</th>
+                    
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for claim in object_list %}
-                    <tr>
-                        <td>{{claim.patience_name}}</td>
+                    <tr >
+                        <td> <a href="{% url 'claim-details' claim.pk %}">{{claim.patience_name}}</a></td>
                         <td>{{claim.gender}}</td>
                         <td>{{claim.email}}</td>
-                        <td>{{claim.date_of_birth}}</td>
+                        {% if claim.classification == 'Clean' %}<td class= 'badge badge-dot bg-success'>{{claim.classification}}</td> {% else %}<td class= 'text-danger'>{{claim.classification}}</td> {% endif %}
+                      
                         <td class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-1">
                                 <li>
