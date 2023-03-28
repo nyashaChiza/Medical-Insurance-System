@@ -1,4 +1,5 @@
 from django.urls import path
+from claims import views
 
 from .views import(
     
@@ -7,7 +8,8 @@ from .views import(
     ClaimsCreateView,
     ClaimsUpdateView,
     ClaimsDeleteView,
-    ClaimsDetailView
+    ClaimsDetailView,
+    download_claims
 )
 
 urlpatterns = [
@@ -16,5 +18,6 @@ urlpatterns = [
     path('update-claim/<int:pk>/', ClaimsUpdateView.as_view(), name="update-claim"),
     path('delete-claim/<int:pk>/', ClaimsDeleteView.as_view(), name="delete-claim"),
     path('claim-details/<int:pk>/', ClaimsDetailView.as_view(), name="claim-details"),
+    path('download-claims/', views.download_claims, name="download-claims"),
 
 ]
