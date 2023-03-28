@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     
     #3rd party apps
     "crispy_forms",
+    "xlwt",
+    "pandas",
+    "openpyxl",
+    "xlsxwriter"
 
 ]
 

@@ -3,5 +3,6 @@ from .claims import(
     ClaimsCreateView,
     ClaimsUpdateView,
     ClaimsDeleteView,
-    ClaimsDetailView
+    ClaimsDetailView,
+    download_claims
 )
