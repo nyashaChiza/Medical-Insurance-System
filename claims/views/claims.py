@@ -70,6 +70,5 @@ def download_claims(request):
             ws.write(row_num, col_num, row[col_num], font_style)
 
     wb.save(response)
-
     return response
     
