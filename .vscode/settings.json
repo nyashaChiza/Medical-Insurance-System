@@ -1,3 +1,13 @@
 {
-    "nuxt.isNuxtApp": false
+    "nuxt.isNuxtApp": false,
+    "git-blame.gitWebUrl": "",
+    "cSpell.words": [
+        "dtypes",
+        "officedocument",
+        "openpyxl",
+        "openxmlformats",
+        "spreadsheetml",
+        "xlsxwriter",
+        "xlwt"
+    ]
 }

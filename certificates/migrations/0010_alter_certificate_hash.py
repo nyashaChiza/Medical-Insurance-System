@@ -7,15 +7,13 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("certificates", "0009_alter_certificate_hash"),
+        ('certificates', '0009_alter_certificate_hash'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="certificate",
-            name="hash",
-            field=models.TextField(
-                default=uuid.UUID("e9d1f9e3-c856-4453-a954-f6dc94fe5942")
-            ),
+            model_name='certificate',
+            name='hash',
+            field=models.TextField(default=uuid.UUID('868d87b8-8c2f-43f1-ab19-812859d6a88b')),
         ),
     ]
