@@ -9,7 +9,7 @@ from django.views.generic import (
 )
 from django.contrib.messages.views import SuccessMessageMixin
 from certificates.forms import CreateCertficateValidationForm
-
+from django.conf import settings
 
 class CertificateValidationCreateView(CreateView, SuccessMessageMixin):
     model = CertificateValidation
@@ -17,6 +17,7 @@ class CertificateValidationCreateView(CreateView, SuccessMessageMixin):
     template_name = "validation/create.html"
     success_message = "Certificate Submitted Successfully"
     
+
     def get_success_url(self):
         return reverse('certificates-index')
     

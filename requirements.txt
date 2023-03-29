@@ -7,3 +7,11 @@ django-crispy-forms==1.14.0
 loguru
 mysqlclient
 docx-mailmerge==0.5.0
+pandas
+seaborn
+matplotlib
+numpy
+scikit-learn
+xlwt
+pyngrok
+docx2txt

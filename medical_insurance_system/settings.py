@@ -21,7 +21,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")#"django-insecure-fq()c6k+g09#*ci@16o1ales8r
 DEBUG = os.getenv("DEBUG")
 USE_MYSQL = os.getenv("USE_MYSQL")
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','.ngrok.io']
 
 
 # Application definition
@@ -41,9 +41,6 @@ INSTALLED_APPS = [
     #3rd party apps
     "crispy_forms",
     "xlwt",
-    "pandas",
-    "openpyxl",
-    "xlsxwriter"
 
 ]
 
@@ -148,6 +145,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+DATASET_PATH = os.path.join(BASE_DIR, "claims/datasets")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -158,6 +156,9 @@ LOGGER = loguru.logger
 
 CERTIFICATE_TEMPLATE = f"{MEDIA_ROOT}/certificate_templates/Certificate of Service.docx"
 
-GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'))
-RELATIONSHIP = (('S', 'Single'), ('M', 'Married'))
+GENDER_CHOICES = (('male', 'Male'), ('female', 'Female'))
+RELATIONSHIP_CHOICES = (('Single', 'Single'), ('Husband', 'Husband'), ('Wife','Wife'),('Brother','Brother'),('Sister','Sister'),('Aunt','Aunt'),('Grandmother','Grandmother'),('Uncle','Uncle'),('Grandfather','Grandfather'),('Nephew','Nephew'),('Niece','Niece'),('Other','Other'))
+CAUSE_CHOICES = (('RTA','Road Traffic Accident'),('AAH','Accident At Home'),('AAW','Accident At Work'),('O','Other'))
+CLASS_CHOICES = (('Fraud','Fraud'), ('Clean','Clean'),(None, None))
 
+CSRF_TRUSTED_ORIGINS = ["https://*.ngrok.io"]

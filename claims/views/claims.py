@@ -7,7 +7,8 @@ from django.urls import reverse
 from django.http import HttpResponse
 import xlwt
 import pandas as pd
-from io import BytesIO
+from django.conf import settings
+
 
 class ClaimsListView(ListView):
     model = Claim
@@ -19,6 +20,24 @@ class ClaimsCreateView(SuccessMessageMixin, CreateView):
     form_class = ClaimsForm
     template_name = 'claims/create.html'
     success_message = "Claim created successfully"
+    
+    def form_valid(self, form):
+        gender = 'male' if form.instance.gender else 'female'
+        
+        for cause in settings.CAUSE_CHOICES:
+            if cause[0] == form.instance.cause:
+                selected_cause = cause[1]
+
+        data ={'member-name': 'Evans', 'gender': gender, 'email': 'raskawrq@washington.edu', 'location': 'Gweru', 'employer': 'Mudo', 'relationship': form.instance.relationship, 'patient_name': 'Samvura', 'patient_suffix':random.randint(100,999)  , 'patient_dob': '09/10/1986', 'number_of_dependants': form.instance.number_of_dependents, 'Fee Charged': form.instance.fee_charged, 'cause': selected_cause, 'number_of_claims': random.randint(0,6) , 'membership_period': random.randint(0,15) }
+        classifier = Classification(data)
+        classification = classifier.classify()
+        
+        form.instance.classification = 'Clean' if classification else 'Fraud'
+        form.save()
+        
+        settings.LOGGER.debug(f"classification: {classification}")
+        
+        return super().form_valid(form)
     
     def get_success_url(self):
         return reverse("claims-index")
@@ -47,8 +66,10 @@ class ClaimsDetailView(DetailView):
     template_name = "claims/detail.html"
 
 def download_claims(request):
+    import random
+    title = f"claims-report-{random.randint(1000,9999)}.xls"
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="claims.xls"'
+    response['Content-Disposition'] = f'attachment; filename="{title}"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Claims')
@@ -57,14 +78,15 @@ def download_claims(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Patient Name', 'Location', 'Gender', 'Email','Cause', 'Employer', 'Relationship', 'Patient Suffix', 'NOD', 'Fee Charged', 'Service Provider' ]
+    columns = ['Patient Name', 'Location', 'Gender', 'Email','Cause', 'Employer', 'Relationship', 'Patient Suffix', 'NOD', 'Fee Charged', 'Classification Status' ]
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style) 
 
     font_style = xlwt.XFStyle()
-    rows = Claim.objects.all().values_list('patience_name', 'location', 'gender','email','cause','employer','relationship','patient_suffix','number_of_dependants','fee_charged', 'service_provider')
+    rows = Claim.objects.all().values_list('patience_name', 'city', 'gender','email','cause','employer','relationship','patient_suffix','number_of_dependents','fee_charged', 'classification')
     for row in rows:
+        settings.LOGGER.critical(row)
         row_num += 1
         for col_num in range(len(row)):
             ws.write(row_num, col_num, row[col_num], font_style)

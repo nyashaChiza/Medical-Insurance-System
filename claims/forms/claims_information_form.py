@@ -7,5 +7,6 @@ class ClaimsForm(ModelForm):
     
     class Meta:
         model = Claim
-        fields = '__all__'
+        exclude = ['classification']
+        widgets = {'date_of_birth': forms.TextInput(attrs={'type': 'date'})}
         

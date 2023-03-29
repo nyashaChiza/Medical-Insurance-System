@@ -15,9 +15,9 @@
                 <div class="toggle-wrap nk-block-tools-toggle">
                     <div class="toggle-expand-content" data-content="pageMenu">
                         <ul class="nk-block-tools g-3">
-                            <li class="nk-block-tools-opt"><a href="{%url 'download-claims' %}" class="btn btn-primary"><em class="icon ni ni-download"></em><span>Export Claims</span></a></li>
+                            <li class="nk-block-tools-opt"><a href="{%url 'download-claims' %}" class="btn btn-primary"><em class="icon ni ni-download"></em><span>Export Claim Report</span></a></li>
                        
-                            <li class="nk-block-tools-opt"><a href="{%url 'create-claim' %}" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Create Claim</span></a></li>
+                            <li class="nk-block-tools-opt"><a href="{%url 'create-claim' %}" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Create New Claim</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -37,17 +37,19 @@
                         <th>Name</th>
                         <th>Gender</th>
                         <th>Email</th>
-                        <th>DOB</th>
+                        <th>Claim Classification</th>
+                    
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for claim in object_list %}
-                    <tr>
-                        <td>{{claim.patience_name}}</td>
+                    <tr >
+                        <td> <a href="{% url 'claim-details' claim.pk %}">{{claim.patience_name}}</a></td>
                         <td>{{claim.gender}}</td>
                         <td>{{claim.email}}</td>
-                        <td>{{claim.date_of_birth}}</td>
+                        {% if claim.classification == 'Clean' %}<td class= 'badge badge-dot bg-success'>{{claim.classification}}</td> {% else %}<td class= 'text-danger'>{{claim.classification}}</td> {% endif %}
+                      
                         <td class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-1">
                                 <li>
