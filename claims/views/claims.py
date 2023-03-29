@@ -5,9 +5,10 @@ from claims.forms import ClaimsForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.http import HttpResponse
-
+import xlwt
 import pandas as pd
-from io import BytesIO
+from django.conf import settings
+
 
 class ClaimsListView(ListView):
     model = Claim
@@ -65,8 +66,10 @@ class ClaimsDetailView(DetailView):
     template_name = "claims/detail.html"
 
 def download_claims(request):
+    import random
+    title = f"claims-report-{random.randint(1000,9999)}.xls"
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="claims.xls"'
+    response['Content-Disposition'] = f'attachment; filename="{title}"'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Claims')
@@ -75,14 +78,15 @@ def download_claims(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Patient Name', 'Location', 'Gender', 'Email','Cause', 'Employer', 'Relationship', 'Patient Suffix', 'NOD', 'Fee Charged', 'Service Provider' ]
+    columns = ['Patient Name', 'Location', 'Gender', 'Email','Cause', 'Employer', 'Relationship', 'Patient Suffix', 'NOD', 'Fee Charged', 'Classification Status' ]
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style) 
 
     font_style = xlwt.XFStyle()
-    rows = Claim.objects.all().values_list('patience_name', 'location', 'gender','email','cause','employer','relationship','patient_suffix','number_of_dependants','fee_charged', 'service_provider')
+    rows = Claim.objects.all().values_list('patience_name', 'city', 'gender','email','cause','employer','relationship','patient_suffix','number_of_dependents','fee_charged', 'classification')
     for row in rows:
+        settings.LOGGER.critical(row)
         row_num += 1
         for col_num in range(len(row)):
             ws.write(row_num, col_num, row[col_num], font_style)

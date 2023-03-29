@@ -12,5 +12,6 @@ seaborn
 matplotlib
 numpy
 scikit-learn
+xlwt
 pyngrok
-
+docx2txt
