@@ -1,3 +1,3 @@
 from certificates.helpers.date_calculator import add_months
 from certificates.helpers.generate_certificate import CertificateGenerator
-from certificates.helpers.validate_certificate import validate, CertificateValidator
+from certificates.helpers.validate_certificate import validate, CertificateValidator, validate

@@ -10,8 +10,7 @@ class CertificateValidator:
     
     def set_hash(self):      
         text = docx2txt.process(self.path)
-        settings.LOGGER.debug(text)
-        self.hash = 'hash'
+        self.hash = text[:36]
             
         
     def get_certificate(self):

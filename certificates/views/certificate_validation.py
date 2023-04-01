@@ -17,8 +17,22 @@ class CertificateValidationCreateView(CreateView, SuccessMessageMixin):
     template_name = "validation/create.html"
     success_message = "Certificate Submitted Successfully"
     
-
     def get_success_url(self):
-        return reverse('certificates-index')
+        return reverse('validation-index')
+    
+
+class CertificateValidationListView(ListView, SuccessMessageMixin):
+    model = CertificateValidation
+    context_object_name= 'certificates'
+    template_name= 'validation/index.html'
+    
+    
+class CertificateValidationDeleteView(SuccessMessageMixin, DeleteView):
+    model = CertificateValidation
+    success_message = "Certificate Validation Deleted Successfully"
+    
+    def get_success_url(self):
+        return reverse("validation-index")
+    
     
     
