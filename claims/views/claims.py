@@ -87,7 +87,6 @@ def download_claims(request):
     font_style = xlwt.XFStyle()
     rows = Claim.objects.all().values_list('patience_name', 'city', 'gender','email','cause','employer','relationship','patient_suffix','number_of_dependents','fee_charged', 'classification')
     for row in rows:
-        settings.LOGGER.critical(row)
         row_num += 1
         for col_num in range(len(row)):
             ws.write(row_num, col_num, row[col_num], font_style)
