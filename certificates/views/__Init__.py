@@ -1,2 +1,2 @@
-from certificates.views.certificate_validation import CertificateValidationCreateView
+from certificates.views.certificate_validation import CertificateValidationCreateView, CertificateValidationListView, CertificateValidationDeleteView
 from certificates.views.certificates import CertificateDetailView,  CertificateListView, CertificateDownloadView, CertificateCreateView, CertificateUpdateView, CertificateDeleteView

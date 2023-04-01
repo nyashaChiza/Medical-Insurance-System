@@ -8,6 +8,7 @@ from django.http import HttpResponse
 import xlwt
 import pandas as pd
 from django.conf import settings
+from claims.helpers import Classification
 
 
 class ClaimsListView(ListView):
