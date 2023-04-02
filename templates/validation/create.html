@@ -32,7 +32,7 @@
             <div class="card-head">
                 <h5 class="card-title">Certificate Validation</h5>
             </div>
-            <form action="{% url 'validation-create' %}" method="post">
+            <form action="{% url 'validation-create' %}" enctype="multipart/form-data" method="post">
                 {% csrf_token %}
                 <div class="row g-4">
 

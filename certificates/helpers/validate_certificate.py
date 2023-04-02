@@ -8,18 +8,27 @@ class CertificateValidator:
         self.status = None
         self.hash = None
     
-    def set_hash(self):      
-        text = docx2txt.process(self.path)
-        self.hash = text[:36]
+    def set_hash(self):
+        try:      
+            text = docx2txt.process(self.path)
+            self.hash = text[:36]
+        except:
+            self.hash = None
+            
             
         
     def get_certificate(self):
-        self.set_hash()
+        if self.set_hash():
+            return None
+        
         return Certificate.objects.filter(hash=self.hash).first()
         
         
 def validate(path:str):
-    validator = CertificateValidator(path)
+    try:
+        validator = CertificateValidator(path)
+    except:
+        return None
     return validator.get_certificate()
 
     

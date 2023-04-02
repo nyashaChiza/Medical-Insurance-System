@@ -4,20 +4,21 @@ from django.dispatch import receiver
 from certificates.models import Certificate, CertificateValidation
 from certificates.helpers import validate
 import random
+import os
 
 @receiver(post_save, sender=CertificateValidation, dispatch_uid='validate_certificate')
 def validate_certificate(sender, instance, created, **kwargs):
     if created:
         settings.LOGGER.critical(instance.certificate)
-        status = random.choice(['Clean', 'Fake'])
-        certificate = Certificate.objects.first()
-        
+
+        path = os.path.join(settings.MEDIA_ROOT,instance.certificate.path )
+        certificate = validate(path)
         if certificate:
-            instance.status = status
+            instance.status = 'Clean'
             instance.save()
             settings.LOGGER.success(f'{instance.title} generated successfully')
         else:
-            instance.status = status
+            instance.status = 'Fake'
             instance.save()
             settings.LOGGER.error(f'{instance.title} certificate generation failed')
         

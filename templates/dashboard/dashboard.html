@@ -29,50 +29,54 @@
                 <div class="card-inner">
                     <div class="card-title-group align-start mb-3">
                         <div class="card-title">
-                            <h6 class="title">Orders Overview</h6>
-                            <p>In last 15 days buy and sells overview. <a href="#" class="link link-sm">Detailed
+                            <h6 class="title">Medical Insurance </h6>
+                            <p><a href="#" class="link link-sm">Detailed
                                     Stats</a></p>
                         </div>
-                        <div class="card-tools mt-n1 me-n1">
-                            <div class="drodown">
-                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em
-                                        class="icon ni ni-more-h"></em></a>
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
-                                    <ul class="link-list-opt no-bdr">
-                                        <li><a href="#" class="active"><span>15 Days</span></a></li>
-                                        <li><a href="#"><span>30 Days</span></a></li>
-                                        <li><a href="#"><span>3 Months</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="card-tools mt-n1 me-n1"></div>
                     </div><!-- .card-title-group -->
                     <div class="nk-order-ovwg">
                         <div class="row g-4 align-end">
-                            <div class="col-xxl-8">
-                                <div class="nk-order-ovwg-ck">
-                                    <canvas class="order-overview-chart" id="orderOverview"></canvas>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-xxl-4">
+                            <!-- .col -->
+                            <div class="col-md-6">
                                 <div class="row g-4">
                                     <div class="col-sm-6 col-xxl-12">
                                         <div class="nk-order-ovwg-data buy">
-                                            <div class="amount">12,954.63 <small
-                                                    class="currenct currency-usd">USD</small></div>
-                                            <div class="info">Last month <strong>39,485 <span
-                                                        class="currenct currency-usd">USD</span></strong></div>
-                                            <div class="title"><em class="icon ni ni-arrow-down-left"></em> Buy Orders
+                                            <div class="amount"> {{ clean_claims }} <small
+                                                    class="currenct currency-usd">Clean Claims</small></div>
+                                    
+                                            <div class="title"><em class="icon ni ni-arrow-down-left"></em> Medical Aid Claims
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-sm-6 col-xxl-12 border-danger">
+                                        <div class="nk-order-ovwg-data buy border-danger">
+                                            <div class="amount text-danger">{{ fraud_claims }} <small
+                                                    class="currenct currency-usd text-danger">Fraudulent Claims</small></div>
+                                    
+                                            <div class="title"><em class="icon ni ni-arrow-down-left text-danger"></em> Medical Aid Claims
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="col-md-6">
+                                <div class="row g-4">
                                     <div class="col-sm-6 col-xxl-12">
-                                        <div class="nk-order-ovwg-data sell">
-                                            <div class="amount">12,954.63 <small
-                                                    class="currenct currency-usd">USD</small></div>
-                                            <div class="info">Last month <strong>39,485 <span
-                                                        class="currenct currency-usd">USD</span></strong></div>
-                                            <div class="title"><em class="icon ni ni-arrow-up-left"></em> Sell Orders
+                                        <div class="nk-order-ovwg-data buy">
+                                            <div class="amount">{{ clean_certificates }} <small
+                                                    class="currenct currency-usd">Clean Certificates</small></div>
+                                    
+                                            <div class="title"><em class="icon ni ni-arrow-down-left"></em> Medical Aid Claims
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xxl-12 border-danger">
+                                        <div class="nk-order-ovwg-data buy border-danger">
+                                            <div class="amount text-danger">{{ fake_certificates }} <small
+                                                    class="currenct currency-usd text-danger">Fraudulent Certificates</small></div>
+                                    
+                                            <div class="title"><em class="icon ni ni-arrow-down-left text-danger"></em> Certificates
                                             </div>
                                         </div>
                                     </div>
@@ -83,44 +87,6 @@
                 </div><!-- .card-inner -->
             </div><!-- .card -->
 
-            <div class="card card-bordered">
-                <div class="card-inner">
-                    <div class="card-title-group align-start gx-3 mb-3">
-                        <div class="card-title">
-                            <h6 class="title">Payments</h6>
-                            <p>Monthly  <a href="#">See Details</a></p>
-                        </div>
-                        <div class="card-tools">
-                            <div class="dropdown">
-                                <a href="#" class="btn btn-primary btn-dim d-none d-sm-inline-flex"
-                                    data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span><span
-                                            class="d-none d-md-inline">Download</span> Report</span></a>
-                                <a href="#" class="btn btn-icon btn-primary btn-dim d-sm-none"
-                                    data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em></a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <ul class="link-list-opt no-bdr">
-                                        <li><a href="#"><span>Download Mini Version</span></a></li>
-                                        <li><a href="#"><span>Download Full Version</span></a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><em class="icon ni ni-opt-alt"></em><span>More
-                                                    Options</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nk-sale-data-group align-center justify-between gy-3 gx-5">
-                        <div class="nk-sale-data">
-                            <span class="amount">82,944.60</span>
-                        </div>
-                        <div class="nk-sale-data">
-                            <span class="amount sm">1,937 <small>Trained Employees</small></span>
-                        </div>
-                    </div>
-                    <div class="nk-sales-ck large pt-4">
-                        <canvas class="sales-overview-chart" id="salesOverview"></canvas>
-                    </div>
-                </div>
-            </div><!-- .card -->
+            <!-- .card -->
         </div>
             {% endblock %}
