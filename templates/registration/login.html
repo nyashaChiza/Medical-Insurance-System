@@ -1,0 +1,88 @@
+{% load static%}
+
+
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+
+<head>
+    <base href="../../../">
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <!-- Page Title  -->
+    <title>Login | MID</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="{% static 'assets/css/dashlite.css?ver=3.1.1' %}">
+    <link id="skin-default" rel="stylesheet" href="{% static 'assets/css/theme.css?ver=3.1.1' %}">
+</head>
+
+<body class="nk-body npc-crypto bg-white pg-auth">
+    <!-- app body @s -->
+    <div class="nk-app-root">
+        <div class="nk-split nk-split-page nk-split-lg">
+            <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white">
+                <div class="absolute-top-right d-lg-none p-3 p-sm-5">
+                    <a href="#" class="toggle btn-white btn btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
+                </div>
+                <div class="nk-block nk-block-middle nk-auth-body">
+                    <div class="brand-logo pb-5">
+                        <a href="html/index.html" class="logo-link">
+                            <img class="logo-light logo-img logo-img-lg" src="{% static 'images/logo.png' %}" srcset="{% static 'images/logo2x.png 2x' %}" alt="logo">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title">Medical Insurance System</h3>
+                            </div> </a>
+                    </div>
+                    <div class="nk-block-head">
+                        <div class="nk-block-head-content">
+                            <h5 class="nk-block-title">User Authentication</h5>
+                        </div>
+                        {% for message in messages %}
+                        <div {% if message.tags %} class="alert alert-pro alert-{{ message.tags }} " {% endif %} role="alert">
+                            {{ message }}
+                          </div>
+                       
+                        {% endfor %}
+                    </div><!-- .nk-block-head -->
+                    <form action="#" class="form-validate is-alter" autocomplete="off" method = "POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="email-address">Email or Username</label>
+                                <a class="link link-primary link-sm" tabindex="-1" href="#"></a>
+                            </div>
+                            <div class="form-control-wrap">
+                                <input autocomplete="off" type="text" class="form-control form-control-lg" required name="username" placeholder="Enter your email address or username">
+                            </div>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label class="form-label" for="password">Passcode</label>
+                                <a class="link link-primary link-sm" tabindex="-1" href="html/pages/auths/auth-reset.html"></a>
+                            </div>
+                            <div class="form-control-wrap">
+                                <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch lg" data-target="password">
+                                    <em class="passcode-icon icon-show icon ni ni-eye"></em>
+                                    <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
+                                </a>
+                                <input autocomplete="new-password" type="password" class="form-control form-control-lg" required name="password" placeholder="Enter your passcode">
+                            </div>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block">Sign in</button>
+                        </div>
+                    </form><!-- form -->
+                   </div>
+                </div><!-- .nk-block -->
+                
+            </div><!-- .nk-split-content -->
+        </div><!-- .nk-split -->
+    </div><!-- app body @e -->
+    <!-- JavaScript -->
+    <script src="{% static 'assets/js/bundle.js?ver=3.1.1' %}"></script>
+    <script src="{% static 'assets/js/scripts.js?ver=3.1.1' %}"></script>       
+</body>
+
+</html>
