@@ -19,7 +19,7 @@
     <link id="skin-default" rel="stylesheet" href="{% static 'assets/css/theme.css?ver=3.1.1' %}">
 </head>
 
-<body class="nk-body npc-crypto bg-white pg-auth">
+<body class="nk-body npc-crypto bg-white pg-auth" id='bg' style="background-image: url({% static 'images/favicon.png' %};)">
     <!-- app body @s -->
     <div class="nk-app-root">
         <div class="nk-split nk-split-page nk-split-lg">
@@ -76,7 +76,19 @@
                     </form><!-- form -->
                    </div>
                 </div><!-- .nk-block -->
-                
+                <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-toggle-body="true" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
+                    <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto">
+                        <div class="slider-init" data-slick='{"dots":false, "arrows":false}'>
+                            <div class="slider-item">
+                                <div class="nk-feature nk-feature-center">
+                                    <div class="nk-feature-img">
+                                        <img class="round" src="{% static 'images\log.gif' %}" srcset="./images/slides/promo-a2x.png 2x" alt="">
+                                    </div>                            
+                                </div>
+                            </div><!-- .slider-item -->
+                        </div><!-- .slider-init -->                 
+                    </div><!-- .slider-wrap -->
+                </div><!-- .nk-split-content -->
             </div><!-- .nk-split-content -->
         </div><!-- .nk-split -->
     </div><!-- app body @e -->
