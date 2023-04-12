@@ -1,0 +1,94 @@
+{% extends 'layouts/base.html' %}
+{% load static%}
+
+{% block navigation %}
+{% for message in messages %}
+<div {% if message.tags %} class="alert-dismissible alert alert-pro alert-{{ message.tags }} " {% endif %} role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div> 
+{% endfor %}
+<div class="nk-content-body">
+    <div class="nk-block-head nk-block-head-sm">
+        <div class="nk-block-between py-3 px-3 bg-light rounded-3">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Users <a href="{%url 'register-user' %}"  ><em class="icon ni ni-plus-circle-fill"></em></a></h3>
+                <div class="nk-block-des text-soft">
+                    <p>All System Users</p>
+                </div>
+            </div><!-- .nk-block-head-content -->
+            <div class="nk-block-head-content">
+                <div class="toggle-wrap nk-block-tools-toggle">
+                    <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                            <li class="nk-block-tools-opt"><a href="{%url 'register-user' %}" class="btn btn-primary"><em class="icon ni ni-user"></em><span>Create User</span></a></li>
+                         </ul>
+                    </div>
+                </div>
+            </div><!-- .nk-block-head-content -->
+        </div><!-- .nk-block-between -->
+    </div><!-- .nk-block-head -->
+{% endblock%}
+
+{% block content%}
+<div class="nk-block nk-block-lg">
+    <div class="card card-bordered card-preview">
+        <div class="card-inner">
+            <table class="datatable-init-export nowrap table" data-export-title="Export">
+             
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in object_list %}
+                    <tr>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td class="nk-tb-col nk-tb-col-tools">
+                            <ul class="nk-tb-actions gx-1">
+                                <li>
+                                    <div class="drodown">
+                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul class="link-list-opt no-bdr">
+                                                <li><a href="{% url 'update-user' user.pk%}"><em class="icon ni ni-edit"></em><span>Update</span></a></li>
+                                                <li> <span class="preview-item text-danger" data-bs-toggle="modal" data-bs-target="#modalAlert{{user.pk}}"><span>&nbsp;&nbsp;&nbsp;<em class="icon ni ni-trash-alt"></em> &nbsp;&nbsp;&nbsp;&nbsp;Delete</span></span></li>                           
+                                             </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>  
+                    <div class="modal fade" tabindex="-1" id="modalAlert{{user.pk}}">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body modal-body-lg text-center">
+                                    <div class="nk-modal">
+                                        <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                                        <h4 class="nk-modal-title">Delete {{ user }} </h4><div class="nk-modal-text"><p class="lead">Are You Sure You Want To Delete This User?</p>
+                                    </div>
+                                    <div class="nk-modal-action mt-5">
+                                        <form method="POST" action='{% url 'delete-user' user.pk %}'>
+                                            {% csrf_token %}
+                                            <button type='submit' class="btn btn-lg btn-mw btn-danger" >Delete</button>
+                                            <a href="#" class="btn btn-lg btn-mw btn-light" data-bs-dismiss="modal">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div><!-- .modal-body -->
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}               
+                </tbody>
+                   
+            </table>
+        </div>
+    </div><!-- .card-preview -->
+</div> <!-- nk-block -->
+
+{% endblock %}

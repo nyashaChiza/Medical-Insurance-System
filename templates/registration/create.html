@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+{% load static%}
+
+{% block navigation %}
+<div class="nk-content-body">
+    <div class="nk-block-head nk-block-head-sm">
+        <div class="nk-block-between py-3 px-3 bg-light rounded-3">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Register New User</h3>
+            </div><!-- .nk-block-head-content -->
+            <div class="nk-block-head-content">
+                <div class="toggle-wrap nk-block-tools-toggle">
+                    <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                            <li class="nk-block-tools-opt"><a href="{%url 'users-index' %}" class="btn btn-primary"><em
+                                        class="icon ni ni-curve-down-left"></em><span>Back</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- .nk-block-head-content  -->
+        </div> <!-- .nk-block-between-->
+    </div><!-- .nk-block-head -->
+</div>
+{% endblock%}
+
+{% block content%}
+
+<div class="nk-block nk-block-lg">
+    <div class="card card-bordered">
+        <div class="card-inner">
+            <div class="card-head">
+                <h5 class="card-title">User Information</h5>
+            </div>
+            <form action="{% url 'register-user' %}" method="post">
+                {%csrf_token%}
+                <div class="row g-4">
+
+                    {{ form|crispy }}
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-primary" value="save">Create User</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div><!-- .nk-block -->
+
+{% endblock %}
