@@ -20,7 +20,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")#"django-insecure-fq()c6k+g09#*ci@16o1ales8r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 USE_MYSQL = os.getenv("USE_MYSQL")
-
+GMAIL_ACCOUNT  = os.getenv("GMAIL_ACCOUNT")
+GMAIL_PASSWORD  = os.getenv("GMAIL_PASSWORD")
+GMAIL_HOST  = os.getenv("GMAIL_HOST")
+GMAIL_PORT  = os.getenv("GMAIL_PORT")
+EMAIL_HOST_USER = 'nchizampeni@gmail.com'
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','.ngrok.io']
 
 
@@ -136,6 +140,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = GMAIL_HOST
+EMAIL_USE_TLS = True
+EMAIL_PORT = GMAIL_PORT
+EMAIL_HOST_USER = GMAIL_ACCOUNT
+EMAIL_HOST_PASSWORD = GMAIL_ACCOUNT
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

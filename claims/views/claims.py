@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import  CreateView, DeleteView, DetailView, ListView, UpdateView
+import random
 from claims.models import Claim
 from claims.forms import ClaimsForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.http import HttpResponse
 import xlwt
+from django.core.mail import send_mail 
 import pandas as pd
 from django.conf import settings
 from claims.helpers import Classification
@@ -37,6 +39,12 @@ class ClaimsCreateView(SuccessMessageMixin, CreateView):
         form.save()
         
         settings.LOGGER.debug(f"classification: {classification}")
+        
+        subject = 'Claim AI Classification'
+        message = f'A new claim has been classified as {form.instance.classification}'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = ['nyashac@petalmafrica.com.com',]
+        send_mail( subject, message, email_from, recipient_list )
         
         return super().form_valid(form)
     
