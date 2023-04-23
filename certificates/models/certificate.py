@@ -1,7 +1,11 @@
-from django.db import models
 import uuid
 
+from dateutil.relativedelta import relativedelta
+from django.db import models
+from datetime import datetime
+import pytz
 from service_providers.models import ServiceProvider
+
 
 class Certificate(models.Model):
     title = models.CharField(max_length=255)
@@ -16,3 +20,10 @@ class Certificate(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def valid_until(self):
+        return self.created + relativedelta(months=self.validity_period_in_months)
+    
+    def get_status(self):
+        utc=pytz.UTC
+        return 'Valid' if utc.localize(datetime.now()) > self.valid_until() else 'Expired'

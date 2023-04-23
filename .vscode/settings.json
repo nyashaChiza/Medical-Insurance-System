@@ -6,6 +6,7 @@
         "officedocument",
         "openpyxl",
         "openxmlformats",
+        "relativedelta",
         "spreadsheetml",
         "xlsxwriter",
         "xlwt"

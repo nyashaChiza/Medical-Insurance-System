@@ -25,7 +25,7 @@ GMAIL_PASSWORD  = os.getenv("GMAIL_PASSWORD")
 GMAIL_HOST  = os.getenv("GMAIL_HOST")
 GMAIL_PORT  = os.getenv("GMAIL_PORT")
 EMAIL_HOST_USER = 'nchizampeni@gmail.com'
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','.ngrok.io']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','.ngrok.io','f49c-2c0f-f8f0-2e05-0-cc4-19f0-ab42-d82.ngrok-free.app']
 
 
 # Application definition
@@ -145,7 +145,9 @@ EMAIL_HOST = GMAIL_HOST
 EMAIL_USE_TLS = True
 EMAIL_PORT = GMAIL_PORT
 EMAIL_HOST_USER = GMAIL_ACCOUNT
-EMAIL_HOST_PASSWORD = GMAIL_ACCOUNT
+EMAIL_HOST_PASSWORD = GMAIL_PASSWORD
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -173,4 +175,6 @@ RELATIONSHIP_CHOICES = (('Single', 'Single'), ('Husband', 'Husband'), ('Wife','W
 CAUSE_CHOICES = (('RTA','Road Traffic Accident'),('AAH','Accident At Home'),('AAW','Accident At Work'),('O','Other'))
 CLASS_CHOICES = (('Fraud','Fraud'), ('Clean','Clean'),(None, None))
 
-CSRF_TRUSTED_ORIGINS = ["https://*.ngrok.io"]
+CSRF_TRUSTED_ORIGINS = ["https://*.ngrok-free.app"]
+
+DEFAULT_ALERT_RECIPIENT = 'nyashac@petalmafrica.com'

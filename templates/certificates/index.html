@@ -42,8 +42,8 @@
             <tr>
               <th>Title</th>
               <th>Service Provider</th>
-              <th>Validity Period</th>
-              <th>Created On</th>
+              <th>Validity Until</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -57,8 +57,8 @@
               </a>
               </td>
               <td>{{certificate.service_provider}}</td>
-              <td>{{certificate.validity_period_in_months }} Months</td>
-              <td>{{certificate.created|date:"d/m/Y - g:ia" }}</td>
+              <td>{{certificate.valid_until|date:"d-m-Y - g:ia" }}</td>
+              <td>{{certificate.get_status }}</td>
               <td class="nk-tb-col nk-tb-col-tools">
                 <ul class="nk-tb-actions gx-1">
                   <li>

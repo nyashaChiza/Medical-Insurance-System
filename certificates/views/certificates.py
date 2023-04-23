@@ -19,6 +19,7 @@ from certificates.helpers import CertificateGenerator
 
 
 
+
 class CertificateCreateView(SuccessMessageMixin, CreateView):
     model = Certificate
     form_class = CreateCertficateForm

@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.contrib import messages
 from certificates.models import CertificateValidation
 from claims.models import Claim
-
+from certificates.helpers import send_reminders
 
 class DashboardListView(TemplateView):
     
@@ -16,6 +16,6 @@ class DashboardListView(TemplateView):
         context['fake_certificates'] = CertificateValidation.objects.filter(status = 'Fake').count()
         context['clean_claims'] = Claim.objects.filter(classification = 'Clean').count()
         context['fraud_claims'] = Claim.objects.filter(classification = 'Fraud').count()  
-        
+        send_reminders()
         return context      
         
