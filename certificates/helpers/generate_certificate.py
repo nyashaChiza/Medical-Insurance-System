@@ -8,7 +8,7 @@ CERTIFICATE_TEMPLATE = settings.CERTIFICATE_TEMPLATE
 class CertificateGenerator:
     def __init__(self, certificate: Certificate):
         self.certificate = certificate
-        self.path = settings.BASE_DIR / 'media/certificates/'
+        self.path = settings.BASE_DIR / 'media\\certificates\\'
     
     
     def generate(self):

@@ -35,6 +35,7 @@ class ClaimsCreateView(SuccessMessageMixin, CreateView):
         classifier = Classification(data)
         classification = classifier.classify()
         
+        
         form.instance.classification = 'Clean' if classification else 'Fraud'
         form.save()
         
