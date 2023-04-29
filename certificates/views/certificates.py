@@ -1,23 +1,18 @@
-from django.shortcuts import render, reverse
-from certificates.models import Certificate
-from django.http import HttpResponse
-from django.views.generic import (
-    ListView,
-    DetailView,
-    UpdateView,
-    DeleteView,
-    CreateView,
-    TemplateView
-)
-from django.contrib.messages.views import SuccessMessageMixin
-from certificates.forms import CreateCertficateForm, UpdateCertficateForm
-from certificates.helpers import add_months
 import datetime
 import os
+
 from django.conf import settings
-from certificates.helpers import CertificateGenerator 
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponse
+from django.shortcuts import redirect, render, reverse
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  TemplateView, UpdateView)
 
-
+from certificates.forms import CreateCertficateForm, UpdateCertficateForm
+from certificates.helpers import (CertificateGenerator, add_months,
+                                  send_reminder)
+from certificates.models import Certificate
 
 
 class CertificateCreateView(SuccessMessageMixin, CreateView):
@@ -76,3 +71,13 @@ class CertificateDownloadView(TemplateView):
             response = HttpResponse(rf.read(), content_type="application/vnd.docx")
             response['Content-Disposition'] = f'inline; filename={os.path.basename(certificate.path)}'
             return response
+        
+
+
+
+class SendNotificationView(TemplateView):
+    def get(self, request, certificate_id, *args, **kwargs):
+        certificate = Certificate.objects.filter(id=certificate_id).first()  
+        settings.LOGGER.success(send_reminder(certificate))
+        messages.success(request,'Notification Sent Successfully')
+        return redirect(reverse("certificates-index")) 

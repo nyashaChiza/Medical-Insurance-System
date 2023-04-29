@@ -58,7 +58,7 @@
               </td>
               <td>{{certificate.service_provider}}</td>
               <td>{{certificate.valid_until|date:"d-m-Y - g:ia" }}</td>
-              <td>{{certificate.get_status }}</td>
+              <td class={% if certificate.get_status == 'Expired' %}{% else %} "badge badge-dot bg-success"{% endif %}"badge badge-dot bg-danger">{{certificate.get_status }}</td>
               <td class="nk-tb-col nk-tb-col-tools">
                 <ul class="nk-tb-actions gx-1">
                   <li>
@@ -88,7 +88,15 @@
                               ><span>Download</span></a
                             >
                           </li>
-                         
+                          {% if certificate.get_status == 'Expired' %}
+                          <li>
+                            <a href="{% url 'send-notification' certificate.pk  %}"
+                              >
+                              <em class="icon ni ni-notify"></em>
+                              <span>Notify Service Provider </span></a
+                            >
+                          </li>
+                         {% endif %}
                           <li>
                             <span class="preview-item text-danger" data-bs-toggle="modal" data-bs-target="#modalAlert{{certificate.pk}}">
                               

@@ -26,4 +26,4 @@ class Certificate(models.Model):
     
     def get_status(self):
         utc=pytz.UTC
-        return 'Valid' if utc.localize(datetime.now()) > self.valid_until() else 'Expired'
+        return 'Valid' if utc.localize(datetime.now()) < self.valid_until() else 'Expired'

@@ -18,7 +18,7 @@ def send_reminder(certificate: Certificate):
         if validate_alert(certificate):
             recipient = settings.DEFAULT_ALERT_RECIPIENT
             sender = settings.GMAIL_HOST
-            message = f"We are informing you that the certificate {certificate.title} for {certificate.service_provider} has expire, please process a new request."
+            message = f"We are informing you that the certificate {certificate.title} for {certificate.service_provider} has expired, please process a new request."
             send_mail(
                 "Certificate Expiry Alert",
                 message,

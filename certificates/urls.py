@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 
-from .views import CertificateListView,CertificateValidationListView, CertificateValidationDeleteView, CertificateDetailView, CertificateUpdateView, CertificateCreateView, CertificateValidationCreateView, CertificateDeleteView, CertificateDownloadView
+from .views import CertificateListView,SendNotificationView, CertificateValidationListView, CertificateValidationDeleteView, CertificateDetailView, CertificateUpdateView, CertificateCreateView, CertificateValidationCreateView, CertificateDeleteView, CertificateDownloadView
 
 urlpatterns = [
     path("index/", CertificateListView.as_view(), name="certificates-index"),
@@ -15,6 +15,8 @@ urlpatterns = [
          name="delete-certificate"),
     path("certificate/download/<int:certificate_id>/",
          CertificateDownloadView.as_view(), name="download-certificate"),
+     path("notify-service-provider/<int:certificate_id>", SendNotificationView.as_view(),
+         name="send-notification"),
 
     # Validation URLs
     path("validation/index/", CertificateValidationListView.as_view(),
@@ -23,4 +25,5 @@ urlpatterns = [
          name="validation-create"),
     path("validation/delete/<int:pk>", CertificateValidationDeleteView.as_view(),
          name="delete-certificate-validation"),
+
 ]

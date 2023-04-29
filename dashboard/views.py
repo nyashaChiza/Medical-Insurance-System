@@ -16,6 +16,6 @@ class DashboardListView(TemplateView):
         context['fake_certificates'] = CertificateValidation.objects.filter(status = 'Fake').count()
         context['clean_claims'] = Claim.objects.filter(classification = 'Clean').count()
         context['fraud_claims'] = Claim.objects.filter(classification = 'Fraud').count()  
-        send_reminders()
+
         return context      
         

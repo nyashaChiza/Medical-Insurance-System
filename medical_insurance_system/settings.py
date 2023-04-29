@@ -3,8 +3,8 @@
 import os
 from pathlib import Path
 
+import loguru
 from dotenv import load_dotenv
-import loguru 
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,8 +24,10 @@ GMAIL_ACCOUNT  = os.getenv("GMAIL_ACCOUNT")
 GMAIL_PASSWORD  = os.getenv("GMAIL_PASSWORD")
 GMAIL_HOST  = os.getenv("GMAIL_HOST")
 GMAIL_PORT  = os.getenv("GMAIL_PORT")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS")
 EMAIL_HOST_USER = 'nchizampeni@gmail.com'
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','.ngrok.io','f49c-2c0f-f8f0-2e05-0-cc4-19f0-ab42-d82.ngrok-free.app']
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','.ngrok.io', ALLOWED_HOSTS] 
 
 
 # Application definition
@@ -177,4 +179,4 @@ CLASS_CHOICES = (('Fraud','Fraud'), ('Clean','Clean'),(None, None))
 
 CSRF_TRUSTED_ORIGINS = ["https://*.ngrok-free.app"]
 
-DEFAULT_ALERT_RECIPIENT = 'nyashac@petalmafrica.com'
+DEFAULT_ALERT_RECIPIENT = 'mhandutnash@gmail.com'

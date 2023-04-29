@@ -1,4 +1,4 @@
 from certificates.helpers.date_calculator import add_months
 from certificates.helpers.generate_certificate import CertificateGenerator
 from certificates.helpers.validate_certificate import validate, CertificateValidator, validate
-from certificates.helpers.send_emails import send_reminders
+from certificates.helpers.send_emails import send_reminders, send_reminder
