@@ -30,7 +30,7 @@ class Classification:
             # Example logic:
             if self.parameters['Fee Charged'] > 1000 and self.parameters['number_of_dependants'] < 5:
                 return 0  # Fraud
-\
+
             else:
                 return 1  # Clean
 
