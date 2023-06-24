@@ -179,4 +179,4 @@ CLASS_CHOICES = (('Fraud','Fraud'), ('Clean','Clean'),(None, None))
 
 CSRF_TRUSTED_ORIGINS = ["https://*.ngrok-free.app"]
 
-DEFAULT_ALERT_RECIPIENT = 'mhandutnash@gmail.com'
+DEFAULT_ALERT_RECIPIENT = 'nchizampeni@gmail.com'

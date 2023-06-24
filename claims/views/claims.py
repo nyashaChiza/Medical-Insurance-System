@@ -33,7 +33,7 @@ class ClaimsCreateView(SuccessMessageMixin, CreateView):
 
         data ={'member-name': 'Evans', 'gender': gender, 'email': 'raskawrq@washington.edu', 'location': 'Gweru', 'employer': 'Mudo', 'relationship': form.instance.relationship, 'patient_name': 'Samvura', 'patient_suffix':random.randint(100,999)  , 'patient_dob': '09/10/1986', 'number_of_dependants': form.instance.number_of_dependents, 'Fee Charged': form.instance.fee_charged, 'cause': selected_cause, 'number_of_claims': random.randint(0,6) , 'membership_period': random.randint(0,15) }
         classifier = Classification(data)
-        classification = classifier.classify()
+        classification = classifier.classify_without_model()
         
         
         form.instance.classification = 'Clean' if classification else 'Fraud'
@@ -44,7 +44,7 @@ class ClaimsCreateView(SuccessMessageMixin, CreateView):
         subject = 'Claim AI Classification'
         message = f'A new claim has been classified as {form.instance.classification}'
         email_from = settings.EMAIL_HOST_USER
-        recipient_list = ['nyashac@petalmafrica.com.com',]
+        recipient_list = ['nyashac@petalmafrica.com',]
         send_mail( subject, message, email_from, recipient_list )
         
         return super().form_valid(form)
